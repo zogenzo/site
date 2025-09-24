@@ -1,0 +1,11 @@
+# nixpacks.toml
+providers = ["static"]
+
+[phases.setup]
+nixPkgs = ["nginx"]
+
+[phases.build]
+cmds = []  # No build needed, as /build is pre-generated
+
+[static]
+public_dir = "build"  # Point to the /build directory
