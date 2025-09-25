@@ -1,11 +1,12 @@
 # nixpacks.toml
-providers = ["static"]
-
 [phases.setup]
-nixPkgs = ["nginx"]
+nixPkgs = ["nginx"]  # Use Nginx to serve the static site
 
 [phases.build]
-cmds = []  # No build needed, as /build is pre-generated
+cmds = []  # No build commands needed since /build is pre-generated
 
-[static]
-public_dir = "build"  # Point to the /build directory
+[phases.start]
+cmd = "nginx -g 'daemon off;'"  # Start Nginx
+
+[staticAssets]
+publicDir = "build"  # Serve static files from the /build directory
